@@ -16,5 +16,5 @@ export async function GET(request: NextRequest) {
   (await draftMode()).enable()
 
   // Redirect to the blog post
-  redirect(slug ? `/${slug}` : '/blog')
+  redirect(slug ? `/view/${slug}` : '/blog')
 }
