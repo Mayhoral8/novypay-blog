@@ -4,14 +4,14 @@ import { draftMode } from 'next/headers';
 import BlogPostClient from "./Client";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const BlogPostPage: React.FC<BlogPostPageProps> = async ({ params }) => {
   const { isEnabled: isDraftMode } = await draftMode();
-  const { slug } = params;
+  const { slug } = await params; // Await the params Promise
 
   return (
     <BlogPostClient 
