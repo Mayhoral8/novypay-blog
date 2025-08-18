@@ -61,6 +61,7 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
     enabled: !!slug,
     // staleTime: 10 * 60 * 1000,
   });
+  console.log("Post data:", post);
 
   if (isLoading) {
     return (
@@ -203,7 +204,7 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
   if (post && slug) {
     if (isDraftMode) {
       return (
-        <PreviewProvider token="skUeaAYFWqFIOI8LfDuYSJlJezCUY5XI0NyozMW7o5Mmi2k31q80mmHZQw6cqOh1sVOjxlTdz5aiRvRKz1vcbN8LmwFjq7FYJVLTnU4YwkdrE8JfVh5jf5XvUY48EK2YF13m46qpg5vLQ503gyGusQEyodJtzHZnDgwMfxv97acXVQcXT0rn">
+        <PreviewProvider token="skf0jm299t9wJRvCZhdz26ICHPJRG2tNG5X1IS5VQjDps5pOeMt3zuStAmuMnmIqpBetKk6vgWUEFWes9FIPtIAdoCoGSHB20cP9gkh0mPsjhul5L2gzrS8sfsAOZuvwVpwx5BZ93WxagOetMXPI21ysra88g0YIDAxF1KrR9KRY3zhIljCp">
           <PreviewBlogPost post={post} slug={slug} />
         </PreviewProvider>
       );
