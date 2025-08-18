@@ -145,7 +145,7 @@ const DesignBlog = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {data?.posts?.map((post: BlogPost, index: number) => {
                 return (
-                  <Link key={index} href={`blog/${post.slug.current}`}>
+                  <Link key={index} href={`view/${post.slug.current}`}>
                     <article className="bg-[#2c2c30] rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden p-1">
                       <div className="aspect-video bg-gray-200 relative overflow-hidden rounded-t-xl">
                         <Image
