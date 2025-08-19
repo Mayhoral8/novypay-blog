@@ -92,7 +92,7 @@ const DesignBlog = () => {
               <span className="text-blue-200 text-sm font-medium">Blog</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Welcome to the illusion services blog.
+              Welcome to the Novy Pay blog.
             </h1>
             {/* <p className="text-xl text-blue-100 mb-8">
               Subscribe to learn about new product features, the latest in
