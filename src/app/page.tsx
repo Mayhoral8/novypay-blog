@@ -1,14 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import usePaginatedPosts from "@/hooks/blog/usePaginatedPosts";
+import background from "@/assets/bg-black.png";
+
 import {
-  ChevronDown,
-  Play,
-  Calendar,
   ArrowLeft,
   ArrowRight,
-  Apple,
-  Smartphone,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -38,82 +35,31 @@ const DesignBlog = () => {
     setEmail("");
   };
 
-
   return (
     <div className="min-h-screen ">
-      {/* Header */}
-      {/* <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-bold">U</span>
-              </div>
-              <span className="font-semibold text-gray-900">Untitled UI</span>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900">Home</a>
-              <div className="flex items-center space-x-1">
-                <a href="#" className="text-gray-700 hover:text-gray-900">Products</a>
-                <ChevronDown className="w-4 h-4 text-gray-500" />
-              </div>
-              <div className="flex items-center space-x-1">
-                <a href="#" className="text-gray-700 hover:text-gray-900">Solutions</a>
-                <ChevronDown className="w-4 h-4 text-gray-500" />
-              </div>
-              <a href="#" className="text-gray-700 hover:text-gray-900">Pricing</a>
-              <div className="flex items-center space-x-1">
-                <a href="#" className="text-gray-700 hover:text-gray-900">Resources</a>
-                <ChevronDown className="w-4 h-4 text-gray-500" />
-              </div>
-              <div className="flex items-center space-x-1">
-                <a href="#" className="text-gray-700 hover:text-gray-900">Company</a>
-                <ChevronDown className="w-4 h-4 text-gray-500" />
-              </div>
-              <div className="flex items-center space-x-1">
-                <a href="#" className="text-gray-700 hover:text-gray-900">Careers</a>
-                <ChevronDown className="w-4 h-4 text-gray-500" />
-              </div>
-            </nav>
-
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
-              Get Started
-            </button>
-          </div>
-        </div>
-      </header> */}
+      <div className={` absolute z-[-10] bottom-0 top-0 right-0 left-0`}>
+        <Image
+          src={background}
+          alt="background"
+          className="w-full lg:h-full h-[1000px] md:h-[1200px]"
+        />
+      </div>
 
       {/* Hero Section */}
       <section className=" text-white py-28">
         <div className="max-w-7xl mx-auto text-center w-full px-4 sm:px-6 lg:px-8">
           <div className="">
             <div className="mb-4">
-              <span className="text-blue-200 text-sm font-medium">Blog</span>
+              <span className="text-white text-sm font-medium">Blog</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Welcome to the Novy Pay blog.
             </h1>
-            {/* <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-white ">
               Subscribe to learn about new product features, the latest in
               technology, solutions, and updates.
             </p>
 
-            <div className="flex gap-3 max-w-md">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
-              />
-              <button
-                onClick={handleSubscribe}
-                className="bg-blue-500 hover:bg-blue-400 px-6 py-3 rounded-lg font-medium transition-colors"
-              >
-                Subscribe
-              </button>
-            </div> */}
           </div>
         </div>
       </section>
@@ -140,52 +86,46 @@ const DesignBlog = () => {
           ))}
         </div>
       ) : (
-        <section className="py-16">
+        <section className="py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {data?.posts?.map((post: BlogPost, index: number) => {
                 return (
                   <Link key={index} href={`view/${post.slug.current}`}>
-                    <article className="bg-[#2c2c30] rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden p-1">
-                      <div className="aspect-video bg-gray-200 relative overflow-hidden rounded-t-xl">
+                    <article className="bg-[#1A1A1A] rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden h-[450px] cursor-pointer group">
+                      {/* Image Container - Takes up top half */}
+                      <div className="bg-gray-200 relative overflow-hidden rounded-t-xl h-1/2">
                         <Image
-                          src={urlFor(post.heroImage)
-                            .width(400)
-                            .height(400)
-                            .url()}
-                          width={100}
-                          height={100}
+                          src={urlFor(post.heroImage).url()}
+                          fill // Use fill instead of fixed dimensions
                           alt={post.title}
                           objectFit="cover"
-                          className="w-full h-full "
+                          className="object-cover group-hover:scale-105 transition-transform duration-300" // Cover for better card appearance
                         />
                       </div>
 
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 text-sm text-gray-200 mb-3">
-                          <span className="">{post.category.title}</span>
-                          <span>•</span>
-                          <span>{post.publishedAt}</span>
-                        </div>
-
-                        <h3 className="text-xl font-semibold  mb-3 line-clamp-2 text-primary">
-                          {post.title}
-                        </h3>
-
-                        <p className="text-gray-200 mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          {post?.tags?.map((tag, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 bg-gray-100 text-gray-200 text-sm rounded-full"
-                            >
-                              {tag.title}
+                      {/* Content Container - Takes up bottom half */}
+                      <div className="p-4 h-1/2 flex flex-col justify-between py-auto">
+                        {/* Top section with metadata and title */}
+                        <div>
+                          <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+                            <span>{post.category.title}</span>
+                            <span>•</span>
+                            <span>
+                              {new Date(post.publishedAt).toLocaleDateString()}
                             </span>
-                          ))}
+                          </div>
+
+                          <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-white group-hover:text-primary transition-colors">
+                            {post.title}
+                          </h3>
+
+                          <p className="text-gray-300 text-sm line-clamp-2 mb-3">
+                            {post.excerpt}
+                          </p>
                         </div>
+
+                       
                       </div>
                     </article>
                   </Link>
@@ -210,11 +150,6 @@ const DesignBlog = () => {
           </div>
         </section>
       )}
-
-    
-      
-
-     
     </div>
   );
 };
