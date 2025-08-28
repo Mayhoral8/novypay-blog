@@ -36,13 +36,14 @@ const BlogPostComp: React.FC<{ post: BlogPost }> = ({ post }) => {
           </p>
 
           <div className="flex items-center space-x-4">
-            {/* <Image
-                src={urlFor(post?.heroImage).width(800).height(400).url()}
+            <Image
+                src={urlFor(post?.author?.avatar).width(800).height(400).url()}
                 width={800}
                 height={100}
                 alt={post.title}
-                className="w-full h-full object-cover"
-              /> */}
+                objectFit="contain"
+                className="w-12 h-12 object-cover rounded-full"
+              />
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-semibold text-gray-200">
